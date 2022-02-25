@@ -57,7 +57,7 @@ class IMS:
        self.lbl_sales.place(x=650,y=300,height=150,width=300)
 
        #===footer=====
-       lbl_footer=Label(self.root,text="IMs-Inventory Management System | Developed by Webcode\nFor any Technical Issue contact",font=("times new roman",15,"bold"),bg="#4d636d",fg="white").pack(side=BOTTOM,fill=X)
+       lbl_footer=Label(self.root,text="IMS-Inventory Management System | Developed by Webcode\nFor any Technical Issue contact",font=("times new roman",15,"bold"),bg="#4d636d",fg="white").pack(side=BOTTOM,fill=X)
 #=============================================================================================================================
     
     def employee(self):
