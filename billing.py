@@ -17,7 +17,7 @@ class BillingClass:
     def __init__(self,root):
         self.root=root
         self.root.geometry("1390x720+0+0")
-        self.root.title("Inventory Management System | Developed By Leena")
+        self.root.title("Inventory Management System | Developed By Hema")
         self.root.config(bg="white")
         self.cart_list=[]
 
