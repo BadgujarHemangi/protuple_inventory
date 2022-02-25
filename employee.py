@@ -104,7 +104,7 @@ class employeeClass:
        scrolly=Scrollbar(emp_frame,orient=HORIZONTAL)
        scrollx=Scrollbar(emp_frame,orient=HORIZONTAL)
 
-       self.EmployeeTable=ttk.Treeview(emp_frame,columns=("emp_id","name","gender","contact","email","dob","doj","address","usertype","password","salary"),yscrollcommand=scrolly.set,xscrollcommand=scrollx.set)
+       self.EmployeeTable=ttk.Treeview(emp_frame,columns=("emp_id","name","gender","contact","email","dob","doj","address","usertype","pass","salary"),yscrollcommand=scrolly.set,xscrollcommand=scrollx.set)
        
        scrollx.pack(side=BOTTOM,fill=X)
        scrolly.pack(side=RIGHT,fill=Y)
@@ -122,7 +122,7 @@ class employeeClass:
        self.EmployeeTable.heading("doj",text="DOJ")
        self.EmployeeTable.heading("address",text="Address")
        self.EmployeeTable.heading("usertype",text="Usertype")
-       self.EmployeeTable.heading("password",text="Password")
+       self.EmployeeTable.heading("pass",text="Password")
        self.EmployeeTable.heading("salary",text="Salary")
 
        self.EmployeeTable["show"]="headings"
@@ -136,7 +136,7 @@ class employeeClass:
        self.EmployeeTable.column("doj",width=100)
        self.EmployeeTable.column("address",width=100)
        self.EmployeeTable.column("usertype",width=100)
-       self.EmployeeTable.column("password",width=100)
+       self.EmployeeTable.column("pass",width=100)
        self.EmployeeTable.column("salary",width=200)
        self.EmployeeTable.pack(fill=BOTH,expand=1)
 
