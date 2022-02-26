@@ -49,7 +49,7 @@ class IMS:
         btn_exit=Button(LeftMenu,text="Exit",image=self.icon_side,compound=LEFT,padx=6,anchor="w",font=("times new roman",20,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
 
         #==================Content=============================
-        self.lbl_employee=Label(self.root,text="Total Employee\n[0]",bd=5,relief=RIDGE,bg="#33bbf9",fg="white",font=("goudy old style",20,"bold"))
+        self.lbl_employee=Label(self.root,text="Total Employee\n[0]",bd=5,relief=RIDGE,bg="aqua",fg="white",font=("goudy old style",20,"bold"))
         self.lbl_employee.place(x=300,y=120,height=150,width=300)
 
         self.lbl_suplier=Label(self.root,text="Total Suplier\n[0]",bd=5,relief=RIDGE,bg="#ff5722",fg="white",font=("goudy old style",20,"bold"))
