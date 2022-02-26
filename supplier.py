@@ -145,30 +145,30 @@ class supplierClass:
          
 
     def update(self):
-        con=sqlite3.connect(database=r'protube_inventory.db')
+        con=sqlite3.connect(database=r'protuple_inventory.db')
         cur=con.cursor()
         try:
             if self.var_sup_invoice.get()=="":
-                messagebox.showerror("Error","Invoice no must be required",parent=self.root)
+                messagebox.showerror("Error","Invoice no. must  be required",parent=self.root)
             else:
                 cur.execute("Select * from supplier where invoice=?",(self.var_sup_invoice.get(),))
                 row=cur.fetchone()
                 if row==None:
-                   messagebox.showerror("Error","Invalid Invoice no",parent=self.root)
+                   messagebox.showerror("Error","Invalid Invoice no.",parent=self.root)
                 else:
-                    cur.execute("Update supplier set name=?,contact=?,desc=? where invoice=?",(
+                    cur.execute("Update supplier set name=?,contact=?,desc=? where invoice=?" ,(
                                
                                 self.var_name.get(),
                                 self.var_contact.get(),
                                 self.txt_desc.get('1.0',END),
-                                self.var_sup_invoice.get(),                  
+                                self.var_sup_invoice.get(),       
                     ))
                     con.commit()
-                    messagebox.showinfo("Success","Supplier Updated Successfully",parent=self.root)
+                    messagebox.showinfo("Success","supplier  Updated Successfully",parent=self.root)
                     self.show()
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to :{str(ex)}",parent=self.root)
-
+        
     def delete(self):
         con=sqlite3.connect(database=r'protuple_inventory.db')
         cur=con.cursor()
@@ -199,7 +199,7 @@ class supplierClass:
         self.show() 
 
     def search(self):
-        con=sqlite3.connect(database=r'protuple_inventory')
+        con=sqlite3.connect(database=r'protuple_inventory.db')
         cur=con.cursor()
         try:
             if self.var_searchtxt.get()=="":

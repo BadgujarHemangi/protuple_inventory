@@ -22,7 +22,7 @@ class BillingClass:
         self.cart_list=[]
 
         #====title====
-        self.icon_title=PhotoImage(file="C:\\Users\\leena\\Downloads\\Project Pic\\logo1.png")
+        self.icon_title=PhotoImage(file="C:\\Users\\Hema's PC\\vscode\\protuple_inventory\\image\\log1.png")
         title=Label(self.root,text="Inventory Management System",image=self.icon_title,compound=LEFT,font=("times new roman",40,"bold"),bg="dark blue",fg="white",anchor="w",padx=20).place(x=0,y=0,relwidth=1,height=70)
 
         
@@ -53,7 +53,7 @@ class BillingClass:
         lbl_search=Label(ProductFrame2,text="Search Product | By Name",font=("goudy new roman",15,"bold"),bg="white",fg="green").place(x=2,y=5)
         lbl_search=Label(ProductFrame2,text="Product Name",font=("goudy new roman",15,"bold"),bg="white").place(x=2,y=45)
         txt_search=Entry(ProductFrame2,textvariable=self.var_search,font=("times new roman",15),bg="lightyellow").place(x=140,y=47,width=150,height=22)
-        btn_search=Button(ProductFrame2,text="Search",command=self.search,font=("goudy old style",15),bg="#2196f3",fg="white",cursor="hand2").place(x=290,y=45,width=100,height=25)
+        btn_search=Button(ProductFrame2,text="Search",command=self.search,font=("goudy old style",15),bg="#2196f3",fg="white",cursor="hand2").place(x=293,y=45,width=100,height=25)
         btn_show_all=Button(ProductFrame2,text="Show All",command=self.show,font=("goudy old style",15),bg="#083531",fg="white",cursor="hand2").place(x=290,y=10,width=100,height=25)
 
         
@@ -108,7 +108,7 @@ class BillingClass:
         self.var_cal_input=StringVar()
 
         Cal_Frame=Frame(Cal_Cart_Frame,bd=9,relief=RIDGE,bg="white")
-        Cal_Frame.place(x=5,y=10,width=268,height=340)
+        Cal_Frame.place(x=5,y=10,width=270,height=340)
         txt_cal_input=Entry(Cal_Frame,textvariable=self.var_cal_input,font=("arial",15,"bold"),width=21,bd=10,relief=GROOVE,state='readonly',justify=RIGHT)
         txt_cal_input.grid(row=0,columnspan=4)
 
@@ -138,7 +138,7 @@ class BillingClass:
         billFrame=Frame(self.root,bd=2,relief=RIDGE,bg='white')
         billFrame.place(x=953,y=110,width=410,height=410)
 
-        BTitle=Label(billFrame,text="Customer Bill Area",font=("goudy old style",20,"bold"),bg="lightgreen",fg="white").pack(side=TOP,fill=X)
+        BTitle=Label(billFrame,text="Customer Bill Area",font=("goudy old style",20,"bold"),bg="skyblue",fg="white").pack(side=TOP,fill=X)
         scrolly=Scrollbar(billFrame,orient=VERTICAL)
         scrolly.pack(side=RIGHT,fill=Y)
         self.txt_bill_area=Text(billFrame,yscrollcommand=scrolly.set)
@@ -172,13 +172,13 @@ class BillingClass:
         #==================cartFrame==================================================
         cart_Frame=Frame(Cal_Cart_Frame,bd=3,relief=RIDGE)
         cart_Frame.place(x=280,y=8,width=245,height=342)
-        self.cartTitle=Label(cart_Frame,text="Cart \t Total Product: [0]",font=("goudy old style",15),bg="lightgrey")
+        self.cartTitle=Label(cart_Frame,text="Cart \t Total Product: [0]",font=("goudy old style",13,"bold"),bg="lightgrey")
         self.cartTitle.pack(side=TOP,fill=X)
 
         scrolly=Scrollbar(cart_Frame,orient=VERTICAL)
         scrollx=Scrollbar(cart_Frame,orient=HORIZONTAL)
 
-        self.CartTable=ttk.Treeview(cart_Frame,columns=("pid","name","price","qty"),yscrollcommand=scrolly.set,xscrollcommand=scrollx.set)
+        self.CartTable=ttk.Treeview(cart_Frame,columns=("pid","name","price","qty","status"),yscrollcommand=scrolly.set,xscrollcommand=scrollx.set)
         scrollx.pack(side=BOTTOM,fill=X)
         scrolly.pack(side=RIGHT,fill=Y)
         scrollx.config(command=self.CartTable.xview)
@@ -187,12 +187,16 @@ class BillingClass:
         self.CartTable.heading("name",text="Name")
         self.CartTable.heading("price",text="Price")
         self.CartTable.heading("qty",text="Quantity")
+        self.CartTable.heading("status",text="status")
+
         self.CartTable["show"]="headings"
 
         self.CartTable.column("pid",width=40)
         self.CartTable.column("name",width=90)
         self.CartTable.column("price",width=90)
-        self.CartTable.column("qty",width=40)
+        self.CartTable.column("qty",width=60)
+        self.CartTable.column("status",width=50)
+
         self.CartTable.pack(fill=BOTH,expand=1)
         self.CartTable.bind("<ButtonRelease-1>",self.get_data_cart)
 
@@ -243,7 +247,7 @@ class BillingClass:
         con=sqlite3.connect(database=r'protuple_inventory.db')
         cur=con.cursor()
         try:
-            cur.execute("Select pid,name,price,qty,status from product")
+            cur.execute("Select pid,name,price,qty,status from product where status='Active' ")
             rows=cur.fetchall()
             self.product_Table.delete(*self.product_Table.get_children())
             for row in rows:
@@ -258,7 +262,7 @@ class BillingClass:
             if self.var_search.get()=="":
                 messagebox.showerror("Error","Search input should be required",parent=self.root)
             else:
-                cur.execute("Select pid,name,price,qty,status from product where name LIKE '%"+self.var_search.get()+"%'")
+                cur.execute("Select pid,name,price,qty,status from product where name LIKE '%"+self.var_search.get()+ "%'and status='Active'")
                 rows=cur.fetchall()
                 if len(rows)!=0:
                     self.product_Table.delete(*self.product_Table.get_children())
