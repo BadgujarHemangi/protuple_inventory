@@ -35,7 +35,7 @@ class BillingClass:
         
         #==========buttuon logout===============
 
-        btn_logout=Button(self.root,text="Logout",font=("times new roman",15,"bold"),bg="yellow",cursor="hand2").place(x=1100,y=10,height=50,width=150)
+        btn_logout=Button(self.root,text="Logout",command=self.logout,font=("times new roman",15,"bold"),bg="yellow",cursor="hand2").place(x=1100,y=10,height=50,width=150)
 
         #=========clock=========================
 
@@ -486,6 +486,10 @@ Net Pay\t\t\tRs.{self.net_pay}
             os.startfile(new_file,'print')
         else:
             messagebox.showerror('print',"please generate bill,to print the receipt",parent=self.root)
+
+    def logout(self):
+        self.root.destroy()
+        os.system("python login.py")
             
 
             
