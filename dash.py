@@ -28,7 +28,7 @@ class IMS:
         title=Label(self.root,text=" Inventory Mangement System",image=self.icon_title,compound=LEFT,font=("times new roman",30,"bold"),bg="#010c48",fg="white",anchor=W).place(x=0,y=0,relwidth=1,height=70)
 
        #===btn_logout===
-        btn_logout=Button(self.root,text="Lagout",font=("times new roman",15,"bold"),bg="yellow",cursor="hand2").place(x=1150,y=10,height=50,width=150)
+        btn_logout=Button(self.root,text="Lagout",command=self.logout,font=("times new roman",15,"bold"),bg="yellow",cursor="hand2").place(x=1150,y=10,height=50,width=150)
 
        #===clock=====
         self.lbl_clock=Label(self.root,text="welcome Inventory Mangement System\t\t Date:DD-MM-YYYY\t\t Time:HH:MM:SS",image=self.icon_title,compound=LEFT,font=("times new roman",15,"bold"),bg="#4d636d",fg="white",anchor=W,padx=20)
@@ -119,7 +119,7 @@ class IMS:
              category=cur.fetchall()
              self.lbl_category.config(text=f'Total category\n[{str(len(category))}]')
              bill=len(os.listdir('bill'))
-             self.lbl_sales.config(text=f'Total sales[{str(bill)}]')
+             self.lbl_sales.config(text=f'Total sales\n[{str(bill)}]')
 
              time_=time.strftime("%I:%M:%S")
              date_=time.strftime("%d-%m-%Y")
@@ -129,6 +129,10 @@ class IMS:
 
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to :{str(ex)}",parent=self.root)
+
+    def logout(self):
+        self.root.destroy()
+        os.system("python login.py")
 
 
 if __name__=="__main__":
