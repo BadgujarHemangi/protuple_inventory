@@ -16,6 +16,7 @@ class categoryClass:
         self.root.focus_force()
 
 
+
         #========================Variable=====================
         self.var_cat_id=StringVar()
         self.var_name=StringVar()
