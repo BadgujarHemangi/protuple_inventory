@@ -24,7 +24,7 @@ class IMS:
         self.root.config(bg="white")
 
         #====title====
-        self.icon_title=PhotoImage(file="C:\\Users\\Hema's PC\\vscode\\protuple_inventory\\image\\one.png")
+        self.icon_title=PhotoImage(file="D:\\protuple_projects\\protuple_inventory\\image\\log1.png")
         title=Label(self.root,text=" Inventory Mangement System",image=self.icon_title,compound=LEFT,font=("times new roman",30,"bold"),bg="#010c48",fg="white",anchor=W).place(x=0,y=0,relwidth=1,height=70)
 
        #===btn_logout===
@@ -35,7 +35,7 @@ class IMS:
         self.lbl_clock.place(x=0,y=70,relwidth=1,height=30)
 
        #====Left Menu===
-        self.MenuLogo=Image.open("C:\\Users\\Hema's PC\\vscode\\protuple_inventory\\image\\menu.png")
+        self.MenuLogo=Image.open("D:\\protuple_projects\\protuple_inventory\\image\\menu.png")
         self.MenuLogo=self.MenuLogo.resize((200,200),Image.ANTIALIAS)
         self.MenuLogo=ImageTk.PhotoImage(self.MenuLogo)
 
@@ -45,7 +45,7 @@ class IMS:
         lbl_menulogo= Label(LeftMenu,image=self.MenuLogo)
         lbl_menulogo.pack(side=TOP,fill=X)
 
-        self.icon_side=PhotoImage(file="C:\\Users\\Hema's PC\\vscode\\protuple_inventory\\image\\side.png")
+        self.icon_side=PhotoImage(file="D:\\protuple_projects\\protuple_inventory\\image\\side.png")
         lbl_menu=Button(LeftMenu,text="Menu",font=("times new roman",20,"bold"),bg="#009688").pack(side=TOP,fill=X)
         btn_employee=Button(LeftMenu,text="Employee",command=self.employee,image=self.icon_side,compound=LEFT,padx=5,anchor="w",font=("times new roman",20,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
         btn_supplier=Button(LeftMenu,text="Supplier",command=self.supplier,image=self.icon_side,compound=LEFT,padx=5,anchor="w",font=("times new roman",20,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)

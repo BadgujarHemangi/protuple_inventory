@@ -63,7 +63,7 @@ class productClass:
         txt_qty=Entry(product_Frame,textvariable=self.var_quantity,font=("goudy old style",15),bg='lightyellow').place(x=150,y=260,width=200)
 
 
-        cmb_status=ttk.Combobox(product_Frame,textvariable=self.var_status,values=("Active","Inactive"),state='readonly',justify=CENTER,font=("goudy old style",15))
+        cmb_status=ttk.Combobox(product_Frame,textvariable=self.var_status,values=("Select","Active","Inactive"),state='readonly',justify=CENTER,font=("goudy old style",15))
         cmb_status.place(x=150,y=310,width=200)
         cmb_status.current(0)
 
@@ -152,8 +152,20 @@ class productClass:
         con=sqlite3.connect(database=r'protuple_inventory.db')
         cur=con.cursor()
         try:
-            if self.var_cat.get()=="Select" or self.var_cat.get()=="Empty" or self.var_sup.get()=="Select" or self.var_name.get()=="":
-                messagebox.showerror("Error","All fields are required",parent=self.root)
+            if self.var_cat.get()=="Select" or self.var_cat.get()=="Empty":
+                messagebox.showerror("Error","please add category",parent=self.root)
+            elif  self.var_sup.get()=="Select" or self.var_sup.get()=="Empty":
+                messagebox.showerror("Error","please add supplier",parent=self.root)
+            elif self.var_name.get() == "":
+                messagebox.showerror("Error", "Product name must be required", parent=self.root)
+            elif self.var_price.get() == "":
+                messagebox.showerror("Error", "Product price must be required", parent=self.root)
+            elif self.var_quantity.get() == "":
+                messagebox.showerror("Error", "Product quantity must be required", parent=self.root)
+            elif self.var_status.get() == "Select" or self.var_status.get() == "Empty":
+                messagebox.showerror("Error", "please add status", parent=self.root)
+
+
             else:
                 cur.execute("Select * from product where name=?",(self.var_name.get(),))
                 row=cur.fetchone()

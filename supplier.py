@@ -101,6 +101,11 @@ class supplierClass:
         try:
             if self.var_sup_invoice.get()=="":
                 messagebox.showerror("Error","Invoice must be required",parent=self.root)
+            elif self.var_name.get() == "":
+                messagebox.showerror("Error", "Supplier Name must be required", parent=self.root)
+            elif  self.var_contact.get() == "" or len(self.var_contact.get())!=10:
+                   messagebox.showerror("Error", "please enter your valid contact", parent=self.root)
+
             else:
                 cur.execute("Select * from supplier where invoice=?",(self.var_sup_invoice.get(),))
                 row=cur.fetchone()

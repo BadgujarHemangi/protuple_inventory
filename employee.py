@@ -5,8 +5,8 @@ from turtle import title
 from PIL import Image,ImageTk
 from tkinter import ttk,messagebox
 import sqlite3
-
 from pkg_resources import EntryPoint
+
 class employeeClass:
     def __init__(self,root):
         self.root=root
@@ -29,9 +29,6 @@ class employeeClass:
         self.var_pass=StringVar()
         self.var_utype=StringVar()
         self.var_salary=StringVar()
-       
-        
-
 
 
 
@@ -82,7 +79,7 @@ class employeeClass:
 
         txt_email=Entry(self.root,textvariable=self.var_email,font=("goudy old style",15),bg="lightyellow").place(x=150,y=230,width=180)
         txt_pass=Entry(self.root,textvariable=self.var_pass,font=("goudy old style",15),bg="lightyellow").place(x=500,y=230,width=180)
-        cmb_utype=ttk.Combobox(self.root,textvariable=self.var_utype,values=("Admin","Employee"),state='readonly',justify=CENTER,font=("goudy old style",15))
+        cmb_utype=ttk.Combobox(self.root,textvariable=self.var_utype,values=("Select","Admin","Employee"),state='readonly',justify=CENTER,font=("goudy old style",15))
         cmb_utype.place(x=850,y=230,width=180)
         cmb_utype.current(0)
 
@@ -148,11 +145,28 @@ class employeeClass:
         try:
             if self.var_emp_id.get()=="":
                 messagebox.showerror("Error","Employee ID must be required",parent=self.root)
+            elif  self.var_name.get() == "":
+                 messagebox.showerror("Error", "Employee Name must be required", parent=self.root)
+            elif self.var_email.get() == "":
+                   messagebox.showerror("Error", "Employee Email must be required", parent=self.root)
+            elif self.var_contact.get() == "" or len(self.var_contact.get())!=10:
+                  messagebox.showerror("Error", "please enter your valid contact", parent=self.root)
+            elif self.var_dob.get() == "":
+                  messagebox.showerror("Error", "Employee birth date must be required", parent=self.root)
+            elif self.var_doj.get() == "":
+                  messagebox.showerror("Error", "Employee joining date must be required", parent=self.root)
+            elif self.var_pass.get() == "":
+                  messagebox.showerror("Error", "Employee password must be required", parent=self.root)
+            elif self.var_salary.get() == "":
+                  messagebox.showerror("Error", "Employee Salary must be required", parent=self.root)
+            elif self.var_utype.get() == "Select" or self.var_utype.get() == "Empty":
+                  messagebox.showerror("Error", "please add user type", parent=self.root)
+
             else:
                 cur.execute("Select * from employee where eid=?",(self.var_emp_id.get(),))
                 row=cur.fetchone()
                 if row!=None:
-                   messagebox.showerror("Error","This Employee ID is already assigned try different",parent=self.root)
+                     messagebox.showerror("Error","This Employee ID is already assigned try different",parent=self.root)
                 else:
                     cur.execute("Insert into employee (eid,name,email,gender,contact,dob,doj,pass,utype,address,salary) values(?,?,?,?,?,?,?,?,?,?,?)",(
                                 self.var_emp_id.get(),
@@ -172,6 +186,7 @@ class employeeClass:
                     self.show()
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to :{str(ex)}",parent=self.root)
+
 
     def show(self):
         con=sqlite3.connect(database=r'protuple_inventory.db')
