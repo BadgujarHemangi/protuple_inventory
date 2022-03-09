@@ -7,6 +7,7 @@ from tkinter import ttk,messagebox
 import sqlite3
 
 from pkg_resources import EntryPoint
+
 class productClass:
     def __init__(self,root):
         self.root=root
