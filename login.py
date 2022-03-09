@@ -11,7 +11,12 @@ import os
 import email_pass
 import smtplib   #pip install smtplib
 import time
+
+root_dir = os.path.dirname(__file__)
+
 class Login_system:
+    def __init__(self,root):
+        self.root=root
     def __init__(self,root):
         self.root=root
         self.root.title("Login System")
@@ -19,9 +24,10 @@ class Login_system:
         self.root.config(bg="#fafafa")
 
         #==========Images====================
+
         self.log_img=Image.open("D:\\protuple_projects\\protuple_inventory\\image\\login1.png")
         self.log_img=self.log_img.resize((500,550),Image.ANTIALIAS)
-        self.log_img=ImageTk.PhotoImage(self.log_img)
+        self.log_img=ImageTk.PhotoImage(file=os.path.join(root_dir,"D:\\protuple_projects\\protuple_inventory\\image\\login1.png"))
         lbl_img=Label(self.root,image=self.log_img,bd=0)
         lbl_img.place(x=200,y=110)
 
@@ -46,9 +52,9 @@ class Login_system:
         btn_forget=Button(login_frame,text="Forget Password?",command=self.forget_window,font=("times new roman",13),bg="white",fg="#00759e",bd=0,activebackground="white",activeforeground="#00759e").place(x=100,y=390)
 
         #======Animation Frame=====
-        self.img=ImageTk.PhotoImage(file="D:\\protuple_projects\\protuple_inventory\\image\\img.png")
-        self.img1=ImageTk.PhotoImage(file="D:\\protuple_projects\\protuple_inventory\\image\\img1.png")
-        self.img2=ImageTk.PhotoImage(file="D:\\protuple_projects\\protuple_inventory\\image\\img2.png")
+        self.img=ImageTk.PhotoImage(file=os.path.join(root_dir,"D:\\protuple_projects\\protuple_inventory\\image\\img.png"))
+        self.img1=ImageTk.PhotoImage(file=os.path.join(root_dir,"D:\\protuple_projects\\protuple_inventory\\image\\img1.png"))
+        self.img2=ImageTk.PhotoImage(file=os.path.join(root_dir,"D:\\protuple_projects\\protuple_inventory\\image\\img2.png"))
 
         self.lbl_change_image=Label(self.root,bg='white')
         self.lbl_change_image.place(x=340,y=193,width=239,height=383)
