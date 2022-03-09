@@ -65,6 +65,7 @@ class BillingClass:
 
         
        #==================product details frame======================================================
+
         ProductFrame3=Frame(ProductFrame1,bd=3,relief=RIDGE)
         ProductFrame3.place(x=2,y=140,width=398,height=375)
 
