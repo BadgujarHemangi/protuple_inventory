@@ -5,7 +5,7 @@ from tkinter import*
 from tkinter import font
 from turtle import title, width
 from unicodedata import category
-from PIL import Image,ImageTk #pip install pillow
+from PIL import Image,ImageTk  #pip install pillow
 from employee import employeeClass
 from supplier import supplierClass
 from category import categoryClass 
@@ -14,6 +14,7 @@ from sales import salesClass
 import sqlite3
 from tkinter import messagebox
 import os
+from os.path import join
 import time
 
 
@@ -29,7 +30,7 @@ class IMS:
         self.root.config(bg="white")
 
         #====title====
-        self.icon_title=PhotoImage(file=os.path.join(root_dir,"D:\\protuple_projects\\protuple_inventory\\image\\log1.png"))
+        self.icon_title=PhotoImage(file=os.path.join(root_dir,"D:/protuple_projects/protuple_inventory/image/log1.png"))
         title=Label(self.root,text=" Inventory Mangement System",image=self.icon_title,compound=LEFT,font=("times new roman",30,"bold"),bg="#010c48",fg="white",anchor=W).place(x=0,y=0,relwidth=1,height=70)
 
        #===btn_logout===
@@ -40,9 +41,9 @@ class IMS:
         self.lbl_clock.place(x=0,y=70,relwidth=1,height=30)
 
        #====Left Menu===
-        self.MenuLogo=Image.open("D:\\protuple_projects\\protuple_inventory\\image\\menu.png")
+        self.MenuLogo=Image.open(os.path.join(root_dir,"D:/protuple_projects/protuple_inventory/image/menu.png"))
         self.MenuLogo=self.MenuLogo.resize((200,200),Image.ANTIALIAS)
-        self.MenuLogo=ImageTk.PhotoImage(file=os.path.join(root_dir,"D:\\protuple_projects\\protuple_inventory\\image\\menu.png"))
+        self.MenuLogo=ImageTk.PhotoImage(self.MenuLogo)
 
         LeftMenu=Frame(self.root,bd=2,relief=RIDGE,bg="white")
         LeftMenu.place(x=0,y=102,width=200,height=565)
@@ -50,7 +51,7 @@ class IMS:
         lbl_menulogo= Label(LeftMenu,image=self.MenuLogo)
         lbl_menulogo.pack(side=TOP,fill=X)
 
-        self.icon_side=PhotoImage(file=os.path.join(root_dir,"D:\\protuple_projects\\protuple_inventory\\image\\side.png"))
+        self.icon_side=PhotoImage(file=os.path.join(root_dir,"D:/protuple_projects/protuple_inventory/image/side.png"))
         lbl_menu=Button(LeftMenu,text="Menu",font=("times new roman",20,"bold"),bg="#009688").pack(side=TOP,fill=X)
         btn_employee=Button(LeftMenu,text="Employee",command=self.employee,image=self.icon_side,compound=LEFT,padx=5,anchor="w",font=("times new roman",20,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
         btn_supplier=Button(LeftMenu,text="Supplier",command=self.supplier,image=self.icon_side,compound=LEFT,padx=5,anchor="w",font=("times new roman",20,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
