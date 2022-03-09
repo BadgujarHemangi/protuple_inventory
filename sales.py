@@ -60,9 +60,9 @@ class salesClass:
         self.bill_area.pack(fill=BOTH,expand=1)
 
         #======================Image=================================
-        self.bill_photo=Image.open("D:\\protuple_projects\\protuple_inventory\\image\\customer.png")
+        self.bill_photo=Image.open(os.path.join(root_dir,"D:/protuple_projects/protuple_inventory/image/customer.png"))
         self.bill_photo=self.bill_photo.resize((390,380),Image.ANTIALIAS)
-        self.bill_photo=ImageTk.PhotoImage(fill=os.path.join(root_dir,"D:\\protuple_projects\\protuple_inventory\\image\\customer.png"))
+        self.bill_photo=ImageTk.PhotoImage(self.bill_photo)
 
         lbl_image=Label(self.root,image=self.bill_photo,bd=0)
         lbl_image.place(x=700,y=110)
