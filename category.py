@@ -5,17 +5,21 @@ from turtle import title
 from PIL import Image,ImageTk
 from tkinter import ttk,messagebox
 import sqlite3
-
+import os
 from pkg_resources import EntryPoint
+
+
+root_dir = os.path.dirname(__file__)
+
 class categoryClass:
+    def __init__(self,root):
+        self.root=root
     def __init__(self,root):
         self.root=root
         self.root.geometry("1100x500+220+130")
         self.root.title("Inventory Management System | Developed By Hema")
         self.root.config(bg="white")
         self.root.focus_force()
-
-
 
         #========================Variable=====================
         self.var_cat_id=StringVar()
@@ -55,14 +59,14 @@ class categoryClass:
         #====image===
         self.im1=Image.open("D:\\protuple_projects\\protuple_inventory\\image\\shopping.png")
         self.im1=self.im1.resize((500,250),Image.ANTIALIAS)
-        self.im1=ImageTk.PhotoImage(self.im1)
+        self.im1=ImageTk.PhotoImage(file=os.path.join(root_dir,"D:\\protuple_projects\\protuple_inventory\\image\\shopping.png"))
 
         self.lbl_im1=Label(self.root,image=self.im1)
         self.lbl_im1.place(x=50,y=220)
 
         self.im2=Image.open("D:\\protuple_projects\\protuple_inventory\\image\\download.png")
         self.im2=self.im2.resize((500,250),Image.ANTIALIAS)
-        self.im2=ImageTk.PhotoImage(self.im2)
+        self.im2=ImageTk.PhotoImage(file=os.path.join(root_dir,"D:\\protuple_projects\\protuple_inventory\\image\\download.png"))
 
         self.lbl_im2=Label(self.root,image=self.im2)
         self.lbl_im2.place(x=580,y=220)
