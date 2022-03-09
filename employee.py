@@ -4,10 +4,24 @@ from tkinter import*
 from turtle import title
 from PIL import Image,ImageTk
 from tkinter import ttk,messagebox
+from tkcalendar import calendar_,DateEntry
 import sqlite3
+import re
 from pkg_resources import EntryPoint
 
+
 class employeeClass:
+
+    def checkEmail(self, val):
+        regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+
+        if re.search(regex, val):
+            # self.wdgLst.configure(text='Email is valid')
+            return True
+        else:
+            # self.wdgLst.configure(text='Email is Invalid')
+            return False
+
     def __init__(self,root):
         self.root=root
         self.root.geometry("1100x500+220+130")
@@ -30,8 +44,6 @@ class employeeClass:
         self.var_utype=StringVar()
         self.var_salary=StringVar()
 
-
-
         #======SearchFrame=====
         SearchFrame=LabelFrame(self.root,text="Search Employee",font=("goudy old style",12,"bold"),bd=2,relief=RIDGE,bg="white")
         SearchFrame.place(x=250,y=20,width=600,height=70)
@@ -47,13 +59,11 @@ class employeeClass:
         #============title===========
         title=Label(self.root,text="Employee Detalis",font=("goudy old style",13),bg="#0f4d7d",fg="white").place(x=50,y=100,width=1000)
 
-
         #============Content==============
         #===row1===
         lbl_empid=Label(self.root,text="Emp ID",font=("goudy old style",15),bg="white",cursor="hand2").place(x=50,y=150)
         lbl_gender=Label(self.root,text="Gender",font=("goudy old style",15),bg="white",cursor="hand2").place(x=350,y=150)
         lbl_contact=Label(self.root,text="Contact",font=("goudy old style",15),bg="white",cursor="hand2").place(x=750,y=150)
-
 
         txt_empid=Entry(self.root,textvariable=self.var_emp_id,font=("goudy old style",15),bg="lightyellow",cursor="hand2").place(x=150,y=150,width=180)
         cmb_gender=ttk.Combobox(self.root,textvariable=self.var_gender,values=("Select","Male","Female","Other"),state='readonly',justify=CENTER,font=("goudy old style",15))
@@ -66,16 +76,16 @@ class employeeClass:
         lbl_dob=Label(self.root,text="D.O.B",font=("goudy old style",15),bg="white",cursor="hand2").place(x=350,y=190)
         lbl_doj=Label(self.root,text="D.O.J",font=("goudy old style",15),bg="white",cursor="hand2").place(x=750,y=190)
 
-
         txt_name=Entry(self.root,textvariable=self.var_name,font=("goudy old style",15),bg="lightyellow").place(x=150,y=190,width=180)
-        txt_dob=Entry(self.root,textvariable=self.var_dob,font=("goudy old style",15),bg="lightyellow").place(x=500,y=190,width=180)
-        txt_doj=Entry(self.root,textvariable=self.var_doj,font=("goudy old style",15),bg="lightyellow").place(x=850,y=190,width=180)
+        txt_dob=DateEntry(self.root,width=180,textvariable=self.var_dob,font=("goudy old style",15),bg="lightyellow").place(x=500,y=190,width=180)
+        txt_doj=DateEntry(self.root,width=180,textvariable=self.var_doj,font=("goudy old style",15),bg="lightyellow").place(x=850,y=190,width=180)
 
          #===row3===============
         lbl_email=Label(self.root,text="Email",font=("goudy old style",15),bg="white").place(x=50,y=230)
         lbl_pass=Label(self.root,text="Password",font=("goudy old style",15),bg="white").place(x=350,y=230)
         lbl_utype=Label(self.root,text="User Type",font=("goudy old style",15),bg="white").place(x=750,y=230)
 
+        regEmail=self.root.register(self.checkEmail)
 
         txt_email=Entry(self.root,textvariable=self.var_email,font=("goudy old style",15),bg="lightyellow").place(x=150,y=230,width=180)
         txt_pass=Entry(self.root,textvariable=self.var_pass,font=("goudy old style",15),bg="lightyellow").place(x=500,y=230,width=180)
@@ -138,7 +148,8 @@ class employeeClass:
         self.EmployeeTable.bind("<ButtonRelease-1>",self.get_data)
 
         self.show()
-# ==================================================================================================================
+#====================================================================================================================
+
     def add(self):
         con=sqlite3.connect(database=r'protuple_inventory.db')
         cur=con.cursor()
@@ -147,13 +158,13 @@ class employeeClass:
                 messagebox.showerror("Error","Employee ID must be required",parent=self.root)
             elif  self.var_name.get() == "":
                  messagebox.showerror("Error", "Employee Name must be required", parent=self.root)
-            elif self.var_email.get() == "":
-                   messagebox.showerror("Error", "Employee Email must be required", parent=self.root)
+            elif not self.checkEmail(self.var_email.get()):
+                  messagebox.showerror("Error", "Employee Email must be required", parent=self.root)
             elif self.var_contact.get() == "" or len(self.var_contact.get())!=10:
                   messagebox.showerror("Error", "please enter your valid contact", parent=self.root)
-            elif self.var_dob.get() == "":
+            elif self.var_dob.get()=="":
                   messagebox.showerror("Error", "Employee birth date must be required", parent=self.root)
-            elif self.var_doj.get() == "":
+            elif self.var_doj.get()=="":
                   messagebox.showerror("Error", "Employee joining date must be required", parent=self.root)
             elif self.var_pass.get() == "":
                   messagebox.showerror("Error", "Employee password must be required", parent=self.root)
@@ -186,7 +197,6 @@ class employeeClass:
                     self.show()
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to :{str(ex)}",parent=self.root)
-
 
     def show(self):
         con=sqlite3.connect(database=r'protuple_inventory.db')
@@ -308,6 +318,7 @@ class employeeClass:
                     messagebox.showerror("Error","No record found",parent=self.root)
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to :{str(ex)}",parent=self.root)
+
 
 
 if __name__=="__main__":
