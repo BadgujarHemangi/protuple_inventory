@@ -8,9 +8,13 @@ from PIL import Image,ImageTk
 from tkinter import ttk,messagebox
 import sqlite3
 import os
-
 from pkg_resources import EntryPoint
+
+root_dir = os.path.dirname(__file__)
+
 class salesClass:
+    def __init__(self,root):
+        self.root=root
     def __init__(self,root):
         self.root=root
         self.root.geometry("1100x500+220+130")
@@ -58,7 +62,7 @@ class salesClass:
         #======================Image=================================
         self.bill_photo=Image.open("D:\\protuple_projects\\protuple_inventory\\image\\customer.png")
         self.bill_photo=self.bill_photo.resize((390,380),Image.ANTIALIAS)
-        self.bill_photo=ImageTk.PhotoImage(self.bill_photo)
+        self.bill_photo=ImageTk.PhotoImage(fill=os.path.join(root_dir,"D:\\protuple_projects\\protuple_inventory\\image\\customer.png"))
 
         lbl_image=Label(self.root,image=self.bill_photo,bd=0)
         lbl_image.place(x=700,y=110)
