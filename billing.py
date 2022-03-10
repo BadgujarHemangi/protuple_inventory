@@ -418,8 +418,11 @@ class BillingClass:
             messagebox.showerror("Error", f"Error due to :{str(ex)}", parent=self.root)
 
     def generate_bill(self):
-        if self.var_cname.get() == '' or self.var_contact.get() == '':
+        if self.var_cname.get() == '':
             messagebox.showerror("Error", f"customer details are required", parent=self.root)
+        elif self.var_contact.get() == "" or len(self.var_contact.get()) != 10:
+            messagebox.showerror("Error", "please enter your valid contact", parent=self.root)
+
         elif len(self.cart_list) == 0:
             messagebox.showerror("Error", f"Please Add product to the cart!!", parent=self.root)
 
