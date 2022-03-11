@@ -7,6 +7,7 @@ from tkinter import ttk,messagebox
 from tkcalendar import calendar_,DateEntry
 import sqlite3
 import re
+import os
 from pkg_resources import EntryPoint
 
 
@@ -106,6 +107,7 @@ class employeeClass:
         btn_update=Button(self.root,text="Update",command=self.update,font=("goudy old style",15),bg="#4caf50",fg="white",cursor="hand2").place(x=620,y=305,width=110,height=28)
         btn_delete=Button(self.root,text="Delete",command=self.delete,font=("goudy old style",15),bg="#f44336",fg="white",cursor="hand2").place(x=740,y=305,width=110,height=28)
         btn_clear=Button(self.root,text="Clear",command=self.clear,font=("goudy old style",15),bg="#607d8b",fg="white",cursor="hand2").place(x=860,y=305,width=110,height=28)
+        btn_back=Button(self.root,text="Back",command=self.back,font=("goudy old style",15),bg="#009688",fg="white",cursor="hand2").place(x=980,y=305,width=110,height=28)
 
 
         #=====employee details======
@@ -318,6 +320,10 @@ class employeeClass:
                     messagebox.showerror("Error","No record found",parent=self.root)
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to :{str(ex)}",parent=self.root)
+
+    def back(self):
+        self.root.destroy()
+        os.system("python dash.py")
 
 
 
