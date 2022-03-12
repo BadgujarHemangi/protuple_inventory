@@ -56,6 +56,8 @@ class employeeClass:
 
         txt_search=Entry(SearchFrame,textvariable=self.var_searchtxt,font=("goudy old style",15),bg="lightyellow").place(x=200,y=10)
         btn_search=Button(SearchFrame,text="Search",command=self.search,font=("goudy old style",15),bg="#4caf50",fg="white",cursor="hand2").place(x=430,y=9,width=150,height=30)
+        btn_exit=Button(self.root,text="Exit",command=self.exit,font=("goudy old style",15),bg="darkkhaki",fg="black",cursor="hand2").place(x=930,y=9,width=130,height=30)
+
 
         #============title===========
         title=Label(self.root,text="Employee Detalis",font=("goudy old style",13),bg="#0f4d7d",fg="white").place(x=50,y=100,width=1000)
@@ -324,6 +326,10 @@ class employeeClass:
     def back(self):
         self.root.destroy()
         os.system("python dash.py")
+
+    def exit(self):
+         self.root.destroy()
+
 
 
 
