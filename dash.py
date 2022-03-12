@@ -25,7 +25,7 @@ class IMS:
         self.root=root
     def __init__(self,root):
         self.root=root
-        self.root.geometry("1350x600+0+0")
+        self.root.geometry("1350x700+0+0")
         self.root.title("Inventory Management System | Developed by Hema")
         self.root.config(bg="white")
 
