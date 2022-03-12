@@ -28,10 +28,11 @@ class categoryClass:
         #=======================title=========================
         lbl_title=Label(self.root,text="Manage Product Category",font=("goudy old style",30),bg="#184a45",fg="white",bd=3,relief=RIDGE).pack(side=TOP,fill=X,padx=10,pady=20)
         lbl_name=Label(self.root,text="Enter Category Name",font=("goudy old style",30),bg="white").place(x=50,y=100)
-        txt_name=Entry(self.root,textvariable=self.var_name,font=("goudy old style",18),bg="lightyellow").place(x=50,y=170,width=300)
-        btn_add=Button(self.root,text="ADD",command=self.add,font=("goudy old style",15),bg="#4caf50",fg="white",cursor="hand2").place(x=360,y=170,width=100,height=30)
-        btn_delete=Button(self.root,text="Delete",command=self.delete,font=("goudy old style",15),bg="red",fg="white",cursor="hand2").place(x=470,y=170,width=100,height=30)
-        btn_back=Button(self.root,text="Back",command=self.back,font=("goudy old style",15),bg="#009688",fg="white",cursor="hand2").place(x=580,y=170,width=100,height=30)
+        txt_name=Entry(self.root,textvariable=self.var_name,font=("goudy old style",18),bg="lightyellow").place(x=50,y=170,width=220)
+        btn_add=Button(self.root,text="ADD",command=self.add,font=("goudy old style",15),bg="#4caf50",fg="white",cursor="hand2").place(x=275,y=170,width=100,height=30)
+        btn_delete=Button(self.root,text="Delete",command=self.delete,font=("goudy old style",15),bg="red",fg="white",cursor="hand2").place(x=380,y=170,width=100,height=30)
+        btn_back=Button(self.root,text="Back",command=self.back,font=("goudy old style",15),bg="#009688",fg="white",cursor="hand2").place(x=485,y=170,width=100,height=30)
+        btn_exit=Button(self.root,text="Exit",command=self.exit,font=("goudy old style",15),bg="darkkhaki",fg="black",cursor="hand2").place(x=590,y=170,width=100,height=30)
 
         #=============category Details==============================
         cat_frame=Frame(self.root,bd=3,relief=RIDGE)
@@ -145,6 +146,10 @@ class categoryClass:
     def back(self):
         self.root.destroy()
         os.system("python supplier.py")
+
+    def exit(self):
+        self.root.destroy()
+
 
 
 if __name__=="__main__":
