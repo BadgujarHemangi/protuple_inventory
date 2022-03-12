@@ -74,6 +74,7 @@ class productClass:
         btn_delete=Button(product_Frame,text="Delete",command=self.delete,font=("goudy old style",15),bg="#f44336",fg="white",cursor="hand2").place(x=180,y=400,width=80,height=28)
         btn_clear=Button(product_Frame,text="Clear",command=self.clear,font=("goudy old style",15),bg="#607d8b",fg="white",cursor="hand2").place(x=265,y=400,width=80,height=28)
         btn_back=Button(product_Frame,text="Back",command=self.back,font=("goudy old style",15),bg="#009688",fg="white",cursor="hand2").place(x=350,y=400,width=80,height=28)
+        btn_exit=Button(self.root,text="Exit",command=self.exit,font=("goudy old style",15),bg="darkkhaki",fg="black",cursor="hand2").place(x=180,y=450,width=100,height=28)
 
         #======SearchFrame=====
         SearchFrame=LabelFrame(self.root,text="Search Employee",font=("goudy old style",12,"bold"),bd=2,relief=RIDGE,bg="white")
@@ -156,7 +157,7 @@ class productClass:
         try:
             if self.var_cat.get()=="Select" or self.var_cat.get()=="Empty":
                 messagebox.showerror("Error","please add category",parent=self.root)
-            elif  self.var_sup.get()=="Select" or self.var_sup.get()=="Empty":
+            elif self.var_sup.get()=="Select" or self.var_sup.get()=="Empty":
                 messagebox.showerror("Error","please add supplier",parent=self.root)
             elif self.var_name.get() == "":
                 messagebox.showerror("Error", "Product name must be required", parent=self.root)
@@ -303,6 +304,9 @@ class productClass:
     def back(self):
         self.root.destroy()
         os.system("python category.py")
+
+    def exit(self):
+        self.root.destroy()
 
 if __name__=="__main__":
  root=Tk()
