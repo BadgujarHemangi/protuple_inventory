@@ -33,9 +33,10 @@ class salesClass:
         lbl_invoice=Label(self.root,text="Invoice No",font=("times new roman",15),bg="white").place(x=50,y=100)
         txt_invoice=Entry(self.root,textvariable=self.var_invoice,font=("times new roman",15),bg="lightyellow").place(x=160,y=100,width=180,height=28)
 
-        btn_search=Button(self.root,text="Search",command=self.search,font=("times new roman",15,"bold"),bg="#2196f3",fg="white",cursor="hand2").place(x=350,y=100,width=100,height=28)
-        btn_clear=Button(self.root,text="Clear",command=self.clear,font=("times new roman",15,"bold"),bg="grey",cursor="hand2").place(x=460,y=100,width=100,height=28)
-        btn_back=Button(self.root,text="Back",command=self.back,font=("goudy old style",15),bg="#009688",fg="white",cursor="hand2").place(x=570,y=100,width=100,height=28)
+        btn_search=Button(self.root,text="Search",command=self.search,font=("times new roman",15,"bold"),bg="#2196f3",fg="white",cursor="hand2").place(x=350,y=100,width=80,height=28)
+        btn_clear=Button(self.root,text="Clear",command=self.clear,font=("times new roman",15,"bold"),bg="grey",fg="white",cursor="hand2").place(x=435,y=100,width=80,height=28)
+        btn_back=Button(self.root,text="Back",command=self.back,font=("goudy old style",15),bg="#009688",fg="white",cursor="hand2").place(x=520,y=100,width=80,height=28)
+        btn_exit=Button(self.root,text="Exit",command=self.exit,font=("goudy old style",15),bg="darkkhaki",fg="black",cursor="hand2").place(x=605,y=100,width=80,height=28)
 
         #==================Bill list====================================
         sales_Frame=Frame(self.root,bd=3,relief=RIDGE)
@@ -110,6 +111,9 @@ class salesClass:
     def back(self):
         self.root.destroy()
         os.system("python product.py")
+
+    def exit(self):
+        self.root.destroy()
 
 if __name__=="__main__":
  root=Tk()
