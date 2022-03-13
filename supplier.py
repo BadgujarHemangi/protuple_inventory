@@ -227,7 +227,7 @@ class supplierClass:
 
     def back(self):
         self.root.destroy()
-        os.system("python employee.py")
+        os.system("python dash.py")
 
     def exit(self):
         self.root.destroy()
