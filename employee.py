@@ -331,8 +331,6 @@ class employeeClass:
          self.root.destroy()
 
 
-
-
 if __name__=="__main__":
  root=Tk()
  obj=employeeClass(root)
