@@ -145,7 +145,7 @@ class categoryClass:
 
     def back(self):
         self.root.destroy()
-        os.system("python supplier.py")
+        os.system("python dash.py")
 
     def exit(self):
         self.root.destroy()
