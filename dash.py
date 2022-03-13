@@ -141,6 +141,7 @@ class IMS:
         if op>0:
          self.root.destroy()
 
+
     def logout(self):
         self.root.destroy()
         os.system("python login.py")
