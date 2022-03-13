@@ -95,6 +95,7 @@ class BillingClass:
         lbl_note = Label(ProductFrame1, text="Note:'Enter 0 Quantity to remove product from the Cart'",font=("goudy old style", 12), anchor="w", bg="white", fg="red").pack(side=BOTTOM, fill=X)
 
         # =====================Custmor frame==================================
+
         self.var_cname = StringVar()
         self.var_contact = StringVar()
         self.var_billno=StringVar()
