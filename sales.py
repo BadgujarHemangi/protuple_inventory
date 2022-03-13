@@ -110,7 +110,7 @@ class salesClass:
 
     def back(self):
         self.root.destroy()
-        os.system("python product.py")
+        os.system("python dash.py")
 
     def exit(self):
         self.root.destroy()
