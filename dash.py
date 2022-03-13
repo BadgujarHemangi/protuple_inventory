@@ -30,7 +30,7 @@ class IMS:
         self.root.config(bg="white")
 
         #====title====
-        self.icon_title=PhotoImage(file=os.path.join(root_dir,"D:/protuple_projects/protuple_inventory/image/log1.png"))
+        self.icon_title=PhotoImage(file=os.path.join(root_dir,"image/log1.png"))
         title=Label(self.root,text=" Inventory Mangement System",image=self.icon_title,compound=LEFT,font=("times new roman",30,"bold"),bg="#010c48",fg="white",anchor=W).place(x=0,y=0,relwidth=1,height=70)
 
        #===btn_logout===
@@ -41,7 +41,7 @@ class IMS:
         self.lbl_clock.place(x=0,y=70,relwidth=1,height=30)
 
        #====Left Menu===
-        self.MenuLogo=Image.open(os.path.join(root_dir,"D:/protuple_projects/protuple_inventory/image/menu.png"))
+        self.MenuLogo=Image.open(os.path.join(root_dir,"image/menu.png"))
         self.MenuLogo=self.MenuLogo.resize((200,200),Image.ANTIALIAS)
         self.MenuLogo=ImageTk.PhotoImage(self.MenuLogo)
 

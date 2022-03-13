@@ -33,7 +33,7 @@ class BillingClass:
         self.chk_print = 0
 
         # ====title====
-        self.icon_title = PhotoImage(file=os.path.join(root_dir,"D:\protuple_projects\protuple_inventory\image\log1.png"))
+        self.icon_title = PhotoImage(file=os.path.join(root_dir,"image\log1.png"))
         title = Label(self.root, text="Inventory Management System", image=self.icon_title, compound=LEFT,
         font=("times new roman", 40, "bold"), bg="#010c48", fg="white", anchor="w", padx=20).place(x=0,y=0,relwidth=1,height=70)
 
