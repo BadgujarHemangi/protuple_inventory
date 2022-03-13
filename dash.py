@@ -51,7 +51,7 @@ class IMS:
         lbl_menulogo= Label(LeftMenu,image=self.MenuLogo)
         lbl_menulogo.pack(side=TOP,fill=X)
 
-        self.icon_side=PhotoImage(file=os.path.join(root_dir,"D:/protuple_projects/protuple_inventory/image/side.png"))
+        self.icon_side=PhotoImage(file=os.path.join(root_dir,"image/side.png"))
         lbl_menu=Button(LeftMenu,text="Menu",font=("times new roman",20,"bold"),bg="#009688").pack(side=TOP,fill=X)
         btn_employee=Button(LeftMenu,text="Employee",command=self.employee,image=self.icon_side,compound=LEFT,padx=5,anchor="w",font=("times new roman",20,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
         btn_supplier=Button(LeftMenu,text="Supplier",command=self.supplier,image=self.icon_side,compound=LEFT,padx=5,anchor="w",font=("times new roman",20,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
