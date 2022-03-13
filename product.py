@@ -303,7 +303,7 @@ class productClass:
 
     def back(self):
         self.root.destroy()
-        os.system("python category.py")
+        os.system("python dash.py")
 
     def exit(self):
         self.root.destroy()
